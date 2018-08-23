@@ -8,8 +8,8 @@
     "build": "babel --out-dir dist src",
     "start": "node demo/server.js",
     "watch": "nodemon -w demo -x node demo/server.js",
-    "test": "yarn build && yarn lint && yarn test:unit && yarn test:integration",
-    "test:unit": "mocha test",
+    "test": "yarn build && yarn lint && yarn test:unit",
+    "test:unit": "nyc mocha",
     "test:integration": "start-server-and-test start http://localhost:3000 cy:run",
     "tdd": "mocha --watch test",
     "lint": "eslint src",
@@ -38,8 +38,7 @@
   "babel": {
     "presets": [
       "env",
-      "react",
-      "es2016"
+      "react"
     ],
     "plugins": [
       "transform-object-rest-spread",
@@ -55,11 +54,13 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "babelify": "^8.0.0",
     "browserify": "^16.2.2",
     "chai": "^4.1.2",
+    "chai-enzyme": "^1.0.0-beta.0",
     "cypress": "^3.0.3",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -74,6 +75,7 @@
     "literalify": "^0.4.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.3",
+    "nyc": "^12.0.2",
     "react": "^16.3.2",
     "react-addons-test-utils": "^15.1.0",
     "react-dom": "^16.3.2",
@@ -84,6 +86,7 @@
     "create-react-context": "^0.2.2",
     "hoist-non-react-statics": "^3.0.1",
     "prop-types": "^15.5.10",
+    "react-lorem-component": "0.13.0",
     "warning": "^4.0.2"
   }
 }
