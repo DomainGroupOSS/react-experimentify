@@ -7,4 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][]
 
 ### Added
+- Setup test suite with mocha, chai & enzyme
+- Control component
 - Created react-experimentify
