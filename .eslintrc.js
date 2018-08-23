@@ -3,6 +3,9 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 'off',
   },
+  parserOptions: {
+        ecmaVersion: 6,
+    },
   env: {
     browser: true,
   },
