@@ -1,16 +1,5 @@
 import PropTypes from 'prop-types';
 
-export interface Experiment {
-  activate(): void;
-  controlProps(controlGroup: ?string): mixed;
-  hasVariant(variantIds: Array<string>): boolean;
-  isActive(): boolean;
-  isControl(group: ?string): boolean;
-  subscribe(listener: Function): Function;
-  update(group: { group: Array<string> }): void;
-  variantProps(): mixed;
-}
-
 export default {
   activate: PropTypes.func.isRequired,
   controlProps: PropTypes.func.isRequired,
