@@ -51,8 +51,6 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-es2016": "^6.24.1",
-    "babel-preset-es2017": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "babelify": "^8.0.0",
@@ -87,6 +85,7 @@
     "create-react-context": "^0.2.2",
     "hoist-non-react-statics": "^3.0.1",
     "invariant": "^2.2.4",
+    "lodash": "^4.17.10",
     "prop-types": "^15.5.10",
     "react-lorem-component": "0.13.0",
     "warning": "^4.0.2"

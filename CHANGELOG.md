@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][]
 
 ### Added
+- Experiment Globals
 - Addded Treatment component and tests
 - with-experiment wrapper and `src/helper/` functions to
   set component display name
