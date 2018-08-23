@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][]
 
 ### Added
+- with-experiment wrapper and `src/helper/` functions to
+  set component display name
 - Setup test suite with mocha, chai & enzyme
 - Control component
 - Created react-experimentify
