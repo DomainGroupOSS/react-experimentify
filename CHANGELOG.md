@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][]
 
 ### Added
+- Optimize/optimizely
 - Experiment Opacifier component wrapper
 - Experiment Globals
 - Addded Treatment component and tests
