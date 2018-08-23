@@ -13,20 +13,20 @@ yarn add react-experimentify
 
 * Guide `<Component under experiment>_<Placement Identifier>`
 
-  * eg: `ReactExperimentify_ListingPage`
+  * eg: `h1_ListingPage`
 
 2. Set up an experiment in Google Optimize
 
 * Code to execute via Google Optimize
 
   ```javascript
-  window.dispatchEvent(new CustomEvent('ReactExperimentify_ListingPage.render', {
+  window.dispatchEvent(new CustomEvent('h1_ListingPage.render', {
     detail: {
       title: 'Treatment - ' + Date.now()
     }
   }));
   ```
-* Add `ReactExperimentify_ListingPage.activate` as custom event
+* Add `h1_ListingPage.activate` as custom event
 
   ![targeting](./docs/optimize_targeting.png)
 
@@ -46,7 +46,7 @@ import { Experiment, Treatment, Control, Optimize, ExperimentOpacifier } from 'r
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const experiment = new Optimize('ReactExperimentify_ListingPage');
+const experiment = new Optimize('h1_ListingPage');
 ```
 
 5. Activation
