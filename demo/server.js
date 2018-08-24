@@ -40,8 +40,6 @@ server.get('/bundle.js', (req, res) => {
 server.get('/', (req, res) => {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
 
-  const { width } = req.query;
-
   const props = {
     title: 'React Experimentify Demo',
     experimentName: 'demo_ExperimentName',
