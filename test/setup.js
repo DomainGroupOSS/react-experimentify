@@ -2,8 +2,11 @@ import chai from 'chai';
 import React from 'react';
 import sinon from 'sinon';
 import { JSDOM } from 'jsdom';
+import dirtyChai from 'dirty-chai';
+import sinonChai from 'sinon-chai';
 import chaiEnzyme from 'chai-enzyme';
 import enzyme, { configure } from 'enzyme';
+import chaiAsPromised from 'chai-as-promised';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
@@ -30,5 +33,8 @@ global.expect = chai.expect;
 global.should = chai.should();
 
 global.chai.use(chaiEnzyme());
+global.chai.use(chaiAsPromised);
+global.chai.use(dirtyChai);
+global.chai.use(sinonChai);
 
 copyProps(window, global);
