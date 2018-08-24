@@ -9,8 +9,8 @@ class Treatment extends React.Component {
 
     warning(
       !(render && children),
-      // eslint-disable-next-line max-len, comma-dangle
-      'You should not use <Treatment render> and <Treatment children> in the same treatment; <Treatment children> will be ignored'
+      // eslint-disable-next-line max-len
+      'You should not use <Treatment render> and <Treatment children> in the same treatment; <Treatment children> will be ignored',
     );
   }
 

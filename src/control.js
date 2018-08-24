@@ -9,8 +9,8 @@ class Control extends React.Component {
 
     warning(
       !(render && children),
-      // eslint-disable-next-line max-len, comma-dangle
-      'You should not use <Control render> and <Control children> in the same control; <Control children> will be ignored'
+      // eslint-disable-next-line max-len
+      'You should not use <Control render> and <Control children> in the same control; <Control children> will be ignored',
     );
   }
 

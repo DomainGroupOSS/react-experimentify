@@ -10,8 +10,7 @@ class Experiment extends React.Component {
 
     invariant(
       children == null || React.Children.count(children) === 1,
-      // eslint-disable-next-line comma-dangle
-      'An <Experiment> may have only one child element'
+      'An <Experiment> may have only one child element',
     );
   }
 
