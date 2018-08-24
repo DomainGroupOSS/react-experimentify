@@ -1,13 +1,22 @@
-/* eslint-disable class-methods-use-this, prefer-destructuring */
+/* eslint-disable prefer-destructuring */
 import { Experiment } from './models/experiment';
 
-class Optimizely implements Experiment {
-  constructor(experimentId, groupVariants) {
-    this.experimentId = experimentId;
-    this.groupVariants = groupVariants;
-  }
+export type OptimizelyState = {
+  activeExperiments: Array<string>;
+  variationMap: { [string]: string };
+  variationIdsMap: { [string]: Array<string> };
+} | void;
 
-  pushEvent(eventName) {
+type PropMap = {
+  [string]: any;
+};
+
+class Optimizely<T: PropMap> implements Experiment {
+  experimentId: string;
+  groupVariants: T;
+  listeners: Array<Function> = [];
+
+  static pushEvent(eventName: string) {
     if (typeof window !== 'undefined') {
       const optimizely = window.optimizely;
 
@@ -17,7 +26,7 @@ class Optimizely implements Experiment {
     }
   }
 
-  experimentState() {
+  static experimentState(): OptimizelyState {
     if (
       typeof window !== 'undefined'
       && typeof window.optimizely !== 'undefined'
@@ -29,6 +38,11 @@ class Optimizely implements Experiment {
     return undefined;
   }
 
+  constructor(experimentId: string, groupVariants: T) {
+    this.experimentId = experimentId;
+    this.groupVariants = groupVariants;
+  }
+
   activate = () => {
     const optimizely = window.optimizely;
 
@@ -38,7 +52,7 @@ class Optimizely implements Experiment {
     }
   }
 
-  controlProps = (controlGroup) => {
+  controlProps = (controlGroup: ?string) => {
     if (controlGroup) {
       return this.groupVariants[controlGroup];
     }
@@ -56,7 +70,7 @@ class Optimizely implements Experiment {
     }
   }
 
-  hasVariant = (variantIds) => {
+  hasVariant = (variantIds: Array<string> = []) => {
     const experiment = Optimizely.experimentState();
 
     if (typeof experiment === 'undefined') {
@@ -82,7 +96,7 @@ class Optimizely implements Experiment {
     return experiment.activeExperiments.includes(this.experimentId);
   }
 
-  isControl = (group) => {
+  isControl = (group: ?string) => {
     const experiment = Optimizely.experimentState();
 
     if (typeof experiment === 'undefined') {
@@ -97,7 +111,7 @@ class Optimizely implements Experiment {
     return variations.length === 0 || variations.some(variant => group === variant);
   }
 
-  subscribe = (listener) => {
+  subscribe = (listener: Function) => {
     if (typeof listener !== 'function') {
       throw new Error('Expected listener to be a function.');
     }
@@ -120,7 +134,7 @@ class Optimizely implements Experiment {
     return unsubscribe;
   }
 
-  update = ({ group = [] }) => {
+  update = ({ group = [] }: { group: Array<string> }) => {
     const { variationIdsMap } = Optimizely.experimentState() || {};
 
     if (typeof variationIdsMap !== 'undefined') {
@@ -129,7 +143,7 @@ class Optimizely implements Experiment {
     }
   }
 
-  variantProps = () => {
+  variantProps = (): mixed => {
     const experiment = Optimizely.experimentState();
 
     if (typeof experiment === 'undefined') {
