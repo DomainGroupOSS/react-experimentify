@@ -282,12 +282,6 @@ Using an experiment object, an `Experiment` component can be used to render `Tre
 _Note: Experiments should only ever be used in isolation on `fe-pa` or top level `fe-co` components.
 Experiments should not be run across multiple consumers._
 
-## Code Architecture
-
-Check out the [`fe-boilerplate-generator@3.7.0`
-docs](https://github.com/domain-group/fe-boilerplate-generator/tree/v3.7.0#code-architecture)
-for info on the repo layout, structure and meaning.
-
 ## Changes and history
 
 See [CHANGELOG.md](./CHANGELOG.md).
