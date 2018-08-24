@@ -6,8 +6,8 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "babel --out-dir dist src",
-    "start": "node demo/server.js",
-    "watch": "nodemon -w demo -x node demo/server.js",
+    "start": "yarn build && node demo/server.js",
+    "watch": "yarn build && nodemon -w demo -x node demo/server.js",
     "test": "yarn build && yarn lint && yarn test:unit",
     "test:unit": "nyc mocha",
     "tdd": "mocha --watch test",
