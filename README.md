@@ -1,5 +1,12 @@
 # react-experimentify
-Experiments with React
+
+## About This Project
+
+### Features
+
+A set of components to build experiments in React for A/B and Multivariate testing.
+
+Using an experiment object, an `Experiment` component can be used to render `Treatment` and `Control` components.
 
 ## Usage
 
@@ -127,28 +134,6 @@ Add a `<noscript>` element to the page to override the opacity
 </noscript>
 ```
 
-### Testing
-
-This repo makes use of React's Context API, and as of July 2018, there is an issue with testing
-components with Enzyme. See below for references:
-
-* [Enzyme - New React context API adds new tag types](https://github.com/airbnb/enzyme/issues/1509)
-* [Add support for react context element types](https://github.com/airbnb/enzyme/pull/1513#issuecomment-397128309)
-
-To fix this issue, you can add a specific version of `enzyme-adapter-react-16` to your project depedencies:
-
-```bash
-yarn add --dev enzyme-adapter-react-16@npm:enzyme-react-adapter-future
-```
-
-And then, in your tests, configure Enzyme to use the adapter like so:
-
-```javascript
-import Adapter from 'enzyme-adapter-react-16';
-
-enzyme.configure({ adapter: new Adapter() });
-```
-
 ### Optimizely
 
 ```javascript
@@ -271,16 +256,28 @@ An empty `Array` will move the current user into the control group.
 
 Gets the props for the current variant from the groupVariants.
 
-## About This Project
+### Testing
 
-### Features
+This repo makes use of React's Context API, and as of July 2018, there is an issue with testing
+components with Enzyme. See below for references:
 
-A set of components to build experiments in React for A/B and Multivariate testing.
+* [Enzyme - New React context API adds new tag types](https://github.com/airbnb/enzyme/issues/1509)
+* [Add support for react context element types](https://github.com/airbnb/enzyme/pull/1513#issuecomment-397128309)
 
-Using an experiment object, an `Experiment` component can be used to render `Treatment` and `Control` components.
+To fix this issue, you can add a specific version of `enzyme-adapter-react-16` to your project depedencies:
 
-_Note: Experiments should only ever be used in isolation on `fe-pa` or top level `fe-co` components.
-Experiments should not be run across multiple consumers._
+```bash
+yarn add --dev enzyme-adapter-react-16@npm:enzyme-react-adapter-future
+```
+
+And then, in your tests, configure Enzyme to use the adapter like so:
+
+```javascript
+import Adapter from 'enzyme-adapter-react-16';
+
+enzyme.configure({ adapter: new Adapter() });
+```
+
 
 ## Changes and history
 
