@@ -1,5 +1,4 @@
 node_modules
-cypress/videos/*
 .DS_Store
 .nyc_output/
 dist/
