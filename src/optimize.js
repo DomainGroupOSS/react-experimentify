@@ -13,13 +13,15 @@ class Optimize implements Experiment {
     }
   }
 
-  activate = () => {
+  activate = (onActivation) => {
     this.addEventListener();
 
     // Trigger an experiment execute is a async operation hence we need
     // to fire an event from experiment to trigger the rendering from Google Optimize.
     // This way we are ensuring that Optimize had time to execute the script in the exeriment.
-    console.log(`${this.experimentName}.activate`);
+    if (typeof onActivation === 'function') {
+      onActivation();
+    }
   }
 
   addEventListener = once(() => {

@@ -25,6 +25,14 @@ describe('optimize.js', () => {
 
       expect(listener).to.have.callCount(1);
     });
+
+    it('should use a callback function if provided', () => {
+      const onActivation = sinon.spy();
+      const experiment = new Optimize('OptimizeDemoExperiment');
+      experiment.activate(onActivation);
+
+      expect(onActivation).to.have.been.called();
+    });
   });
 
   describe('controlProps()', () => {

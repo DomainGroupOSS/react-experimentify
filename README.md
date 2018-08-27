@@ -70,6 +70,8 @@ const experiment = new Optimize('h1_ListingPage');
 client side as well. If we want the experiment to be activated straight after the parent component is mounted,
 add following
 
+_experiment.activate() takes an optional callback, should you wish to fire any tracking events or specialised functionality once the experiment has been activated._
+
 ```javascript
 componentDidMount() {
   this.experiment.activate();
