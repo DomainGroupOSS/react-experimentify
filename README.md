@@ -8,7 +8,15 @@ A set of components to build experiments in React for A/B and Multivariate testi
 
 Using an experiment object, an `Experiment` component can be used to render `Treatment` and `Control` components.
 
-## Usage
+### Install
+
+Via NPM:
+
+```bash
+npm install react-experimentify
+```
+
+Via Yarn:
 
 ```bash
 yarn add react-experimentify
