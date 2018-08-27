@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][]
 
 ### Added
+- Documentation for consumers
 - A/B variant button demo
 - Optimize/optimizely
 - Experiment Opacifier component wrapper
