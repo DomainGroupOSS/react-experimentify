@@ -1,7 +1,5 @@
 # react-experimentify
 
-## About This Project
-
 ### Features
 
 A set of components to build experiments in React for A/B and Multivariate testing in Google Optimize or Optimizely.
