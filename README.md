@@ -22,6 +22,11 @@ yarn add react-experimentify
 
 ### Google Optimize
 
+
+_Before jumping into Google Optimise you need to make sure your page will handle google optimise tags. For more info on
+configuring the Google Tag Managers and the windows dataLayer please see
+[Google's Docs](https://support.google.com/tagmanager/answer/7164339?hl=en)_
+
 1. Decide on an experiment name
 
 * Guide `<Component under experiment>_<Placement Identifier>`
