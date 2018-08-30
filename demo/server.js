@@ -53,7 +53,7 @@ server.get('/', (req, res) => {
 <html lang="en-AU">
 <head>
   <title>React Experimentify Demo</title>
-
+  <script>dataLayer = []</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.development.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.development.js"></script>
 </head>
