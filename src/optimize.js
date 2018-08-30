@@ -1,4 +1,5 @@
 import once from 'lodash/once';
+import pushToDataLayer from './helpers/push-to-data-layer';
 import { Experiment } from './models/experiment';
 
 class Optimize implements Experiment {
@@ -19,6 +20,8 @@ class Optimize implements Experiment {
     // Trigger an experiment execute is a async operation hence we need
     // to fire an event from experiment to trigger the rendering from Google Optimize.
     // This way we are ensuring that Optimize had time to execute the script in the exeriment.
+    pushToDataLayer({ event: `${this.experimentName}.activate` });
+
     if (typeof onActivation === 'function') {
       onActivation();
     }
