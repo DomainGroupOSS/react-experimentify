@@ -1,4 +1,4 @@
-# react-experimentify
+# react-experimentify ![npm-version]
 
 ### Features
 
@@ -267,3 +267,5 @@ Gets the props for the current variant from the groupVariants.
 ## Changes and history
 
 See [CHANGELOG.md](./CHANGELOG.md).
+
+[npm-version]: https://badge.fury.io/js/react-experimentify.svg
