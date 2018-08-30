@@ -1,4 +1,4 @@
-# react-experimentify
+# react-experimentify ![npm-version]
 
 ### Features
 
@@ -21,6 +21,11 @@ yarn add react-experimentify
 ```
 
 ### Google Optimize
+
+
+_Before jumping into Google Optimise you need to make sure your page will handle google optimise tags. For more info on
+configuring the Google Tag Managers and the windows dataLayer please see
+[Google's Docs](https://support.google.com/tagmanager/answer/7164339?hl=en)_
 
 1. Decide on an experiment name
 
@@ -267,3 +272,5 @@ Gets the props for the current variant from the groupVariants.
 ## Changes and history
 
 See [CHANGELOG.md](./CHANGELOG.md).
+
+[npm-version]: https://badge.fury.io/js/react-experimentify.svg
