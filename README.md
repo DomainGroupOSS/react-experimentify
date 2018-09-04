@@ -1,4 +1,4 @@
-# react-experimentify [![Build Status](https://travis-ci.org/DomainGroupOSS/react-experimentify.svg?branch=master)](https://travis-ci.org/DomainGroupOSS/react-experimentify.svg?branch=master) ![npm-version]
+# react-experimentify [![Build Status](https://travis-ci.org/DomainGroupOSS/react-experimentify.svg?branch=master)](https://travis-ci.com/DomainGroupOSS/react-experimentify) ![npm-version]
 
 ### Features
 
