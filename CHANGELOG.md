@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [1.0.3][] - 2018-10-31
 ### Fixed
 - Fix release
 
@@ -29,6 +31,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Control component
 - Created react-experimentify
 
-[Unreleased]: https://github.com/DomainGroupOSS/react-experimentify/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/DomainGroupOSS/react-experimentify/compare/v1.0.3...HEAD
+[1.0.3]: https://github.com/DomainGroupOSS/react-experimentify/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/DomainGroupOSS/react-experimentify/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/DomainGroupOSS/react-experimentify/tree/v1.0.1
