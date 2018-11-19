@@ -41,16 +41,9 @@ class Treatment extends React.Component {
   }
 }
 
-const isRender = (props, propName, componentName) => {
+const functionOrEmpty = (props, propName, componentName) => {
   if (!(typeof props[propName] === 'function' || props.children)) {
     return new Error(`Invalid prop \`${propName}\` or children passed to \`${componentName}\`. Expected either a render or children prop.`);
-  }
-  return null;
-};
-
-const isRenderDefaultProps = (props, propName) => {
-  if (!(props.children || props[propName])) {
-    return undefined;
   }
   return null;
 };
@@ -64,13 +57,13 @@ Treatment.propTypes = {
     PropTypes.func,
     PropTypes.node,
   ]),
-  render: isRender,
+  render: functionOrEmpty,
 };
 
 Treatment.defaultProps = {
   groups: [],
   children: undefined,
-  render: isRenderDefaultProps,
+  render: undefined,
 };
 
 export default Treatment;

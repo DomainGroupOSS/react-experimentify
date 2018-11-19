@@ -89,16 +89,9 @@ var Treatment = function (_React$Component) {
   return Treatment;
 }(_react2.default.Component);
 
-var isRender = function isRender(props, propName, componentName) {
+var functionOrEmpty = function functionOrEmpty(props, propName, componentName) {
   if (!(typeof props[propName] === 'function' || props.children)) {
     return new Error('Invalid prop `' + propName + '` or children passed to `' + componentName + '`. Expected either a render or children prop.');
-  }
-  return null;
-};
-
-var isRenderDefaultProps = function isRenderDefaultProps(props, propName) {
-  if (!(props.children || props[propName])) {
-    return undefined;
   }
   return null;
 };
@@ -106,13 +99,13 @@ var isRenderDefaultProps = function isRenderDefaultProps(props, propName) {
 Treatment.propTypes = {
   groups: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.string)]),
   children: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.node]),
-  render: isRender
+  render: functionOrEmpty
 };
 
 Treatment.defaultProps = {
   groups: [],
   children: undefined,
-  render: isRenderDefaultProps
+  render: undefined
 };
 
 exports.default = Treatment;
