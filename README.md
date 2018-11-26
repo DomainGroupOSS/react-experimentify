@@ -274,7 +274,7 @@ Gets the props for the current variant from the groupVariants.
 When the experiment props are received, the React component will remount, so any impression tracking events inside the component may be executed again (if they are in any lifecycle methods like `componentDidMount`).
 
 To avoid recording duplicate impressions, consider ways to mitigate this:
-- Adding a flag as a global variable to check if 'load' events have been fired before
+- Adding a flag as a global variable to check if 'mount' events have already been fired
 - Moving impression events outside of the experiment (into a wrapping component)
 
 ## Changes and history
