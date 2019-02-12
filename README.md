@@ -147,6 +147,23 @@ Add a `<noscript>` element to the page to override the opacity
 </noscript>
 ```
 
+### Debugging
+
+You can enable debugging for experiments using the `debug` npm module.
+In your browser console:
+
+```javascript
+localStorage.debug='react-experimentify'
+```
+
+Then reload the page.
+
+You should see events for
+
+- experiment creation
+- experiment activation and listening (waiting for a variant to fire)
+- `.render` event but only if a variant fires, there is no event for staying with the control
+
 ### Optimizely
 
 ```javascript

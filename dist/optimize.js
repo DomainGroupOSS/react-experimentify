@@ -8,6 +8,10 @@ var _once = require('lodash/once');
 
 var _once2 = _interopRequireDefault(_once);
 
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
 var _pushToDataLayer = require('./helpers/push-to-data-layer');
 
 var _pushToDataLayer2 = _interopRequireDefault(_pushToDataLayer);
@@ -18,6 +22,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var debug = (0, _debug2.default)('react-experimentify');
+
 var Optimize = function Optimize(experimentName, controlProps) {
   var _this = this;
 
@@ -26,6 +32,8 @@ var Optimize = function Optimize(experimentName, controlProps) {
   this.listeners = [];
 
   this.activate = function (onActivation) {
+    debug('Activating ' + _this.experimentName + '.');
+    debug(_this.experimentName + ' isActive=' + _this.isActive() + ' (should be false unless a variant fires in near future)');
     _this.addEventListener();
 
     // Trigger an experiment execute is a async operation hence we need
@@ -40,12 +48,15 @@ var Optimize = function Optimize(experimentName, controlProps) {
 
   this.addEventListener = (0, _once2.default)(function () {
     if (window) {
+      debug('Listening for "' + _this.experimentName + '.render".');
       window.addEventListener(_this.experimentName + '.render', _this.triggerRenderingOfExperiment);
     }
   });
 
   this.triggerRenderingOfExperiment = function (event) {
+    debug('Received .render event for variant from Optimize for ' + _this.experimentName + '.', event);
     _this.eventData = event.detail;
+    debug(_this.experimentName + ' isActive=' + _this.isActive() + ' (must be true for Treatment to render)');
     _this.dispatch();
   };
 
@@ -55,9 +66,12 @@ var Optimize = function Optimize(experimentName, controlProps) {
 
   this.dispatch = function () {
     if (_this.isActive()) {
+      debug('Dispatching subscribers for ' + _this.experimentName + '.');
       _this.listeners.forEach(function (listener) {
         return listener({});
       });
+    } else {
+      debug('NOT Dispatching subscribers for ' + _this.experimentName + ' because experiment is not active.');
     }
   };
 
@@ -109,6 +123,7 @@ var Optimize = function Optimize(experimentName, controlProps) {
   if (controlProps) {
     this.controlProps = controlProps;
   }
+  debug('Created ' + experimentName + '.');
 };
 
 exports.default = Optimize;
