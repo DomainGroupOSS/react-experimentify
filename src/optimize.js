@@ -1,6 +1,9 @@
 import once from 'lodash/once';
+import Debug from 'debug';
 import pushToDataLayer from './helpers/push-to-data-layer';
 import { Experiment } from './models/experiment';
+
+const debug = Debug('react-experimentify');
 
 class Optimize implements Experiment {
   listeners: Array<Function> = [];
@@ -12,9 +15,12 @@ class Optimize implements Experiment {
     if (controlProps) {
       this.controlProps = controlProps;
     }
+    debug(`Created ${experimentName}.`);
   }
 
   activate = (onActivation) => {
+    debug(`Activating ${this.experimentName}.`);
+    debug(`${this.experimentName} isActive=${this.isActive()} (should be false unless a variant fires in near future)`);
     this.addEventListener();
 
     // Trigger an experiment execute is a async operation hence we need
@@ -29,12 +35,15 @@ class Optimize implements Experiment {
 
   addEventListener = once(() => {
     if (window) {
+      debug(`Listening for "${this.experimentName}.render".`);
       window.addEventListener(`${this.experimentName}.render`, this.triggerRenderingOfExperiment);
     }
   });
 
   triggerRenderingOfExperiment = (event) => {
+    debug(`Received .render event for variant from Optimize for ${this.experimentName}.`, event);
     this.eventData = event.detail;
+    debug(`${this.experimentName} isActive=${this.isActive()} (must be true for Treatment to render)`);
     this.dispatch();
   }
 
@@ -42,7 +51,10 @@ class Optimize implements Experiment {
 
   dispatch = () => {
     if (this.isActive()) {
+      debug(`Dispatching subscribers for ${this.experimentName}.`);
       this.listeners.forEach(listener => listener({}));
+    } else {
+      debug(`NOT Dispatching subscribers for ${this.experimentName} because experiment is not active.`);
     }
   }
 
