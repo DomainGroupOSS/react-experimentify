@@ -28,7 +28,7 @@ class Optimize implements Experiment {
   }
 
   addEventListener = once(() => {
-    if (typeof window !== 'undefined' && window) {
+    if (typeof window !== 'undefined') {
       window.addEventListener(`${this.experimentName}.render`, this.triggerRenderingOfExperiment);
     }
   });
