@@ -8,7 +8,7 @@ Using an experiment object, an `Experiment` component can be used to render `Tre
 
 ### Install
 
-Via NPM:
+Via NPM
 
 ```bash
 npm install react-experimentify
