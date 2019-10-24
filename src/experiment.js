@@ -5,7 +5,7 @@ import ExperimentModel from './models/experiment';
 import Context from './experiment-context';
 
 class Experiment extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     const { children } = this.props;
 
     invariant(

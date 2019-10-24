@@ -4,7 +4,7 @@ import warning from 'warning';
 import Context from './experiment-context';
 
 class Control extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     const { render, children } = this.props;
 
     warning(
