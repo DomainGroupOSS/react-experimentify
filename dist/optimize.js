@@ -39,7 +39,7 @@ var Optimize = function Optimize(experimentName, controlProps) {
   };
 
   this.addEventListener = (0, _once2.default)(function () {
-    if (window) {
+    if (typeof window !== 'undefined') {
       window.addEventListener(_this.experimentName + '.render', _this.triggerRenderingOfExperiment);
     }
   });

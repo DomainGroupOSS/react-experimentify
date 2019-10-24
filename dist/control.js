@@ -40,8 +40,8 @@ var Control = function (_React$Component) {
   }
 
   _createClass(Control, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       var _props = this.props,
           render = _props.render,
           children = _props.children;

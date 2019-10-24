@@ -44,8 +44,8 @@ var Experiment = function (_React$Component) {
   }
 
   _createClass(Experiment, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       var children = this.props.children;
 
 
