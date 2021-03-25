@@ -20,6 +20,37 @@ Via Yarn:
 yarn add react-experimentify
 ```
 
+### Mixpanel
+
+This component will render a control or single variant dependent upon its `showVariant` prop. Additionally, it will signal to mixpanel that an experiment has started only when it is in the user's viewport. This is achieved using [react-intersection-observer](https://github.com/thebuilder/react-intersection-observer). It will only fire once per user/device, based upon [Mixpanel's `distinct_id`](https://help.mixpanel.com/hc/en-us/articles/115004509406-Distinct-IDs-). 
+
+#### Usage
+
+```javascript
+import { MixpanelExperiment } from 'react-experimentify';
+
+const Component = ({shouldShowVariant}) => (
+  <div>
+    <p>Always rendered</p>
+    <MixpanelExperiment
+      experimentName="My great experiment"
+      showVariant={shouldShowVariant}
+      renderVariant={() => <div>Variant markup</div>}
+      renderControl={() => <div>Control markup</div>}
+    >
+  </div>
+);
+```
+
+#### Props
+
+| Prop | Type | Default | Description | Required |
+| ---- | ---- | ------- | ----------- | -------- |
+| experimentName | string | - | Experiment name logged to mixpanel | yes |
+| showVariant | bool | `false` | Whether to show the variant | no |
+| renderVariant | func | - | Render function called for variant | yes |
+| renderControl | func  | `() => null` | Render function to be called for control  | no |
+
 ### Google Optimize
 
 

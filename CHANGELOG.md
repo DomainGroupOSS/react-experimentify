@@ -5,7 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- experiment component for mixpanel
 
+### Updated
+- yarn upgrade
 ## [1.0.9][] - 2019-10-25
 - Replace deprecated `componentWillMount()` with `componentDidMount()`
 
