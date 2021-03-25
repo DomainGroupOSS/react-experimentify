@@ -8,18 +8,21 @@ const mixpanel = {
   register: sandbox.spy(),
   track: sandbox.spy(),
 };
-const { default: trackMixpanelExperiment } = proxyquire('../../../src/helpers/track-mixpanel-experiment', {
-  './get-mixpanel': { default: () => mixpanel },
+const { default: startMixpanelExperiment } = proxyquire('../../src/start-mixpanel-experiment', {
+  './helpers/get-mixpanel': { default: () => mixpanel },
 });
 
-describe('trackMixpanel helper', () => {
+const args = { experimentName: 'test', isVariant: true };
+
+
+describe.only('trackMixpanel helper', () => {
   beforeEach(() => {
     sandbox.reset();
     mixpanel.get_property.returns(false);
   });
 
   it('should track with correct data when showing variant', () => {
-    trackMixpanelExperiment('test', true);
+    startMixpanelExperiment(args);
 
     expect(mixpanel.register).to.have.been.calledOnceWith({
       'experiment-test': 'Variant',
@@ -32,7 +35,7 @@ describe('trackMixpanel helper', () => {
   });
 
   it('should track with correct data when showing control', () => {
-    trackMixpanelExperiment('test', false);
+    startMixpanelExperiment({ ...args, isVariant: false });
 
     expect(mixpanel.register).to.have.been.calledOnceWith({
       'experiment-test': 'Control',
@@ -47,10 +50,29 @@ describe('trackMixpanel helper', () => {
   it('should not track when already fired', () => {
     mixpanel.get_property.returns('Variant');
 
-    trackMixpanelExperiment('test', true);
+    startMixpanelExperiment(args);
 
     expect(mixpanel.register).to.not.have.been.called();
 
     expect(mixpanel.track).to.not.have.been.called();
+  });
+
+
+  it('should fire onError if experiment start throws', () => {
+    const error = new Error('oops');
+    mixpanel.get_property.throws(error);
+    const onError = sandbox.spy();
+
+    startMixpanelExperiment({ ...args, onError });
+
+    expect(onError).to.have.been.calledOnceWith(error, 'Error starting mixpanel experiment test');
+  });
+
+  it('should fire onSuccess if starting experiment is successful', () => {
+    const onSuccess = sandbox.spy();
+
+    startMixpanelExperiment({ ...args, onSuccess });
+
+    expect(onSuccess).to.have.been.calledOnce();
   });
 });

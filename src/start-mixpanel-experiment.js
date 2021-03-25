@@ -1,7 +1,9 @@
-import getMixpanel from './get-mixpanel';
+import getMixpanel from './helpers/get-mixpanel';
 
 
-const trackMixpanelExperiment = (experimentName, isVariant) => {
+const startMixpanelExperiment = ({
+  experimentName, isVariant, onError = () => {}, onSuccess = () => {},
+}) => {
   const superPropertyKey = `experiment-${experimentName}`;
   try {
     const mixpanel = getMixpanel();
@@ -17,17 +19,13 @@ const trackMixpanelExperiment = (experimentName, isVariant) => {
       mixpanel.track('$experiment_started', {
         'Experiment name': experimentName,
         'Variant name': value,
-
       });
+
+      onSuccess();
     }
   } catch (error) {
-    // log to raygun if globally available
-    if (typeof rg4js === 'function') {
-      rg4js('send', { error, tags: ['mixpanel'], customData: `Error tracking mixpanel experiment ${experimentName}` });
-    } else {
-      console.error(`Error tracking mixpanel experiment ${experimentName}`);
-    }
+    onError(error, `Error starting mixpanel experiment ${experimentName}`);
   }
 };
 
-export default trackMixpanelExperiment;
+export default startMixpanelExperiment;

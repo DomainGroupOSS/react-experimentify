@@ -20,36 +20,62 @@ Via Yarn:
 yarn add react-experimentify
 ```
 
-### Mixpanel
+### Mixpanel - `startMixpanelExperiment`
 
-This component will render a control or single variant dependent upon its `showVariant` prop. Additionally, it will signal to mixpanel that an experiment has started only when it is in the user's viewport. This is achieved using [react-intersection-observer](https://github.com/thebuilder/react-intersection-observer). It will only fire once per user/device, based upon [Mixpanel's `distinct_id`](https://help.mixpanel.com/hc/en-us/articles/115004509406-Distinct-IDs-). 
+This function will signal to mixpanel that an experiment has started, and the group that the user has been bucketed into - either `Control` or `Variant`. It will only fire once per user/device, based upon [Mixpanel's `distinct_id`](https://help.mixpanel.com/hc/en-us/articles/115004509406-Distinct-IDs-). 
 
 #### Usage
 
+Example of usage when treated component is in the user's viewport:
+
 ```javascript
-import { MixpanelExperiment } from 'react-experimentify';
+import { startMixpanelExperiment } from 'react-experimentify';
+import { useInView } from 'react-intersection-observer';
+
+const InViewMixpanelExperiment = ({
+  experimentName,
+  showVariant,
+  variant,
+  control,
+}) => {
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      startMixpanelExperiment({
+        experimentName, 
+        isVariant: showVariant,
+        onError: (err, errMsg) => console.error(err, errMsg),
+        onSuccess: () => console.log('great success'),
+      });
+    }
+  }, [inView, experimentName, showVariant]);
+
+  return <div ref={ref}>{showVariant ? variant : control}</div>;
+};
 
 const Component = ({shouldShowVariant}) => (
   <div>
     <p>Always rendered</p>
-    <MixpanelExperiment
+    <InViewMixpanelExperiment
       experimentName="My great experiment"
       showVariant={shouldShowVariant}
-      renderVariant={() => <div>Variant markup</div>}
-      renderControl={() => <div>Control markup</div>}
-    >
+      variant={<div>Variant markup</div>}
+      control={<div>Control markup</div>}
+    />
   </div>
 );
 ```
 
-#### Props
+#### Parameters
 
-| Prop | Type | Default | Description | Required |
+| Parameter | Type | Default | Description | Required |
 | ---- | ---- | ------- | ----------- | -------- |
-| experimentName | string | - | Experiment name logged to mixpanel | yes |
-| showVariant | bool | `false` | Whether to show the variant | no |
-| renderVariant | func | - | Render function called for variant | yes |
-| renderControl | func  | `() => null` | Render function to be called for control  | no |
+| experimentName | `string` | - | Experiment name logged to mixpanel | yes |
+| isVariant | `bool` | - | Dictates value for experiment in mixpanel | yes |
+| onError | `(error, errorMessage) => func` | `noop` | Called with error and error message if caught when starting experiment with mixpanel | no |
+| onSuccess | `() => func` | `noop` | Called with no args on successful experiment start | no |
+
 
 ### Google Optimize
 

@@ -76,12 +76,12 @@ Object.defineProperty(exports, 'withExperiment', {
   }
 });
 
-var _mixpanel = require('./mixpanel');
+var _startMixpanelExperiment = require('./start-mixpanel-experiment');
 
-Object.defineProperty(exports, 'MixpanelExperiment', {
+Object.defineProperty(exports, 'startMixpanelExperiment', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_mixpanel).default;
+    return _interopRequireDefault(_startMixpanelExperiment).default;
   }
 });
 
