@@ -76,4 +76,13 @@ Object.defineProperty(exports, 'withExperiment', {
   }
 });
 
+var _startMixpanelExperiment = require('./start-mixpanel-experiment');
+
+Object.defineProperty(exports, 'startMixpanelExperiment', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_startMixpanelExperiment).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
