@@ -15,7 +15,7 @@ const { default: startMixpanelExperiment } = proxyquire('../../src/start-mixpane
 const args = { experimentName: 'test', isVariant: true };
 
 
-describe.only('trackMixpanel helper', () => {
+describe('trackMixpanel helper', () => {
   beforeEach(() => {
     sandbox.reset();
     mixpanel.get_property.returns(false);
