@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [1.1.0][] - 2021-03-26
 ### Added
 - mixpanel experiment start function
 
@@ -51,7 +53,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Control component
 - Created react-experimentify
 
-[Unreleased]: https://github.com/DomainGroupOSS/react-experimentify/compare/v1.0.9...HEAD
+[Unreleased]: https://github.com/DomainGroupOSS/react-experimentify/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/DomainGroupOSS/react-experimentify/compare/v1.0.9...v1.1.0
 [1.0.9]: https://github.com/DomainGroupOSS/react-experimentify/compare/v1.0.8...v1.0.9
 [1.0.8]: https://github.com/DomainGroupOSS/react-experimentify/compare/v1.0.7...v1.0.8
 [1.0.7]: https://github.com/DomainGroupOSS/react-experimentify/compare/v1.0.4...v1.0.7
