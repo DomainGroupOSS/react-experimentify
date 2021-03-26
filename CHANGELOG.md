@@ -6,10 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 ### Added
-- experiment component for mixpanel
+- mixpanel experiment start function
 
 ### Updated
 - yarn upgrade
+
 ## [1.0.9][] - 2019-10-25
 - Replace deprecated `componentWillMount()` with `componentDidMount()`
 

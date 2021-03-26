@@ -93,7 +93,6 @@
     "lodash": "^4.17.10",
     "mixpanel-browser": "^2.41.0",
     "prop-types": "^15.5.10",
-    "react-intersection-observer": "^8.31.0",
     "warning": "^4.0.2"
   }
 }
