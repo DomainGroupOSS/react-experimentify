@@ -1,5 +1,9 @@
 # react-experimentify [![Build Status](https://travis-ci.org/DomainGroupOSS/react-experimentify.svg?branch=master)](https://travis-ci.com/DomainGroupOSS/react-experimentify) ![npm-version]
 
+## WARNING !! this component is no longer active and has been deprecated. Please feel free to fork or find alternatives 😬
+
+
+
 ### Features
 
 A set of components to build experiments in React for A/B and Multivariate testing in Google Optimize or Optimizely.
